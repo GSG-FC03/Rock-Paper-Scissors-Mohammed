@@ -7,14 +7,30 @@ const popMsg = document.getElementById("pop");
 const popImg = document.getElementById("popImg");
 const continueBtn = document.getElementById("continue");
 const restartBtn = document.getElementById("restart");
+const winSound = new Audio("../assets/sounds/win.mp3");
+const loseSound = new Audio("../assets/sounds/lose.wav");
+const gameSound = new Audio("../assets/sounds/ingame.mp3");
+const drawSound = new Audio("../assets/sounds/draw.wav");
+const countSound = new Audio("../assets/sounds/count.wav");
+const clickSound = new Audio("../assets/sounds/click.wav");
 
+
+const playSound = () =>{
+  gameSound.loop = true;
+  gameSound.play();
+}
+playSound();
 const startMove = () =>{
   playerHand.classList = "handL";
   computerHand.classList = "handR";
+  countSound.loop = true;
+  countSound.playbackRate = 1.4;
+  countSound.play();
 }
 const endMove = () =>{
   playerHand.classList = "hand";
   computerHand.classList = "hand";
+  countSound.pause();
 }
 
 
@@ -62,14 +78,19 @@ const checkWinner = () => {
 }
 
 const displayMsgImage = () => {
-  if(draw)
-  popImg.setAttribute("src", "../assets/images/draw.png");
-  else if(isWin)
-  popImg.setAttribute("src", "../assets/images/win.png");
-  else
-  popImg.setAttribute("src", "../assets/images/lose.png");
-   
-
+  if(draw){
+    popImg.setAttribute("src", "../assets/images/draw.png");
+    drawSound.play();
+  }
+  else if(isWin){
+    popImg.setAttribute("src", "../assets/images/win.png");
+    winSound.play();
+  }
+  else{
+    popImg.setAttribute("src", "../assets/images/lose.png");
+    loseSound.play();
+  }
+  
   popMsg.setAttribute("style","display:block;")
 }
 
@@ -81,6 +102,7 @@ const hideMsgImage = () => {
 
 
 const displayRock = () => {
+  gameSound.volume = 0.3;
   startMove();
   setTimeout(()=> {
     endMove();
@@ -92,6 +114,7 @@ const displayRock = () => {
   }, 3000);
 };
 const displayPaper = () => {
+  gameSound.volume = 0.1;
   startMove();
   setTimeout(()=> {
     endMove();
@@ -105,6 +128,7 @@ const displayPaper = () => {
 };
 
 const displayScissors = () => {
+  gameSound.volume = 0.1;
   startMove();
   setTimeout(()=> {
     endMove();
@@ -117,6 +141,7 @@ const displayScissors = () => {
 };
 
 const restart = () =>{
+  clickSound.play();
   computerCounter.textContent = 0;
   playerCounter.textContent = 0;
 }
