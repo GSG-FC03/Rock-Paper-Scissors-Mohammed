@@ -1,28 +1,18 @@
-const playerHand = document.getElementsByClassName("hand")[0];
-const computerHand = document.getElementsByClassName("hand")[1];
+const playerHand = document.getElementById("playerHand");
+const computerHand = document.getElementById("ComputerHand");
 const choices = document.querySelectorAll(".choice-img");
 const computerCounter = document.getElementById("computerCounter");
 const playerCounter = document.getElementById("playerCounter");
 
-const displayRock = () => {
-  playerHand.setAttribute("src", "../assets/images/L1.png");
-  playerHand.setAttribute("id", "rock");
-  generateComputerMove();
-  checkWinner();
-};
-const displayPaper = () => {
-  playerHand.setAttribute("src", "../assets/images/L2.png");
-  playerHand.setAttribute("id", "paper");
-  generateComputerMove();
-  checkWinner();
-};
+const startMove = () =>{
+  playerHand.classList = "handL";
+  computerHand.classList = "handR";
+}
+const endMove = () =>{
+  playerHand.classList = "hand";
+  computerHand.classList = "hand";
+}
 
-const displayScissors = () => {
-  playerHand.setAttribute("src", "../assets/images/L3.png");
-  playerHand.setAttribute("id", "scissors");
-  generateComputerMove();
-  checkWinner();
-};
 
 const generateComputerMove = () => {
   let min = Math.ceil(1);
@@ -59,6 +49,40 @@ const checkWinner = () => {
     playerCounter.textContent = parseInt(playerCounter.textContent)+1;
 
 }
+
+const displayRock = () => {
+  startMove();
+  setTimeout(()=> {
+    endMove();
+    playerHand.setAttribute("src", "../assets/images/L1.png");
+    playerHand.setAttribute("id", "rock");
+    generateComputerMove();
+    checkWinner();
+  }, 3000);
+};
+const displayPaper = () => {
+  startMove();
+  setTimeout(()=> {
+    endMove();
+    playerHand.setAttribute("src", "../assets/images/L2.png");
+    playerHand.setAttribute("id", "paper");
+    generateComputerMove();
+    checkWinner();
+  }, 3000);
+  
+};
+
+const displayScissors = () => {
+  startMove();
+  setTimeout(()=> {
+    endMove();
+    playerHand.setAttribute("src", "../assets/images/L3.png");
+    playerHand.setAttribute("id", "scissors");
+    generateComputerMove();
+    checkWinner();
+  }, 3000);
+};
+
 
 choices[0].addEventListener("click", displayRock);
 choices[1].addEventListener("click", displayPaper);

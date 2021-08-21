@@ -49,6 +49,16 @@ h1 {
   margin-top: 50px;
   width: 200px;
 }
+.handL{
+    margin-top: 50px;
+    width: 200px;
+    animation: spinLeft 1s linear 3;
+}
+.handR {
+    margin-top: 50px;
+    width: 200px;
+    animation: spinRight 1s linear 3;
+}
 
 .choices {
   display: flex;
@@ -70,4 +80,22 @@ h1 {
   border-radius: 25px;
   margin-top: 50px;
   font-size: 20px;
+}
+
+@keyframes spinLeft { 
+    10%,50% {
+        transform :rotate(-45deg); 
+    }  
+    50%,90% {
+        transform :rotate(45deg); 
+    }
+}
+
+@keyframes spinRight { 
+    10%,50% {
+        transform :rotate(45deg); 
+    }  
+    50%,90% {
+        transform :rotate(-45deg); 
+    }  
 }
