@@ -99,6 +99,7 @@ const displayMsgImage = () => {
 }
 
 const hideMsgImage = () => {
+  clickSound.play();
   popMsg.setAttribute("style","display:none;")
   playerHand.setAttribute("src", "../assets/images/L1.png");
   computerHand.setAttribute("src", "../assets/images/R1.png");
@@ -106,6 +107,7 @@ const hideMsgImage = () => {
 
 
 const displayRock = () => {
+  clickSound.play();
   incrementRound();
   gameSound.volume = 0.3;
   startMove();
@@ -119,6 +121,7 @@ const displayRock = () => {
   }, 3000);
 };
 const displayPaper = () => {
+  clickSound.play();
   incrementRound();
   gameSound.volume = 0.1;
   startMove();
@@ -134,6 +137,7 @@ const displayPaper = () => {
 };
 
 const displayScissors = () => {
+  clickSound.play();
   incrementRound();
   gameSound.volume = 0.1;
   startMove();
@@ -151,6 +155,7 @@ const restart = () =>{
   clickSound.play();
   computerCounter.textContent = 0;
   playerCounter.textContent = 0;
+  roundNum.textContent = 0;
 }
 
 continueBtn.addEventListener("click", hideMsgImage);

@@ -60,6 +60,7 @@ body {
 .counter {
   margin: 0px 60px;
   color: #7f4f21;
+  font-size: 24px;
 }
 #player {
   border-radius: 0px 25px 25px 0px;

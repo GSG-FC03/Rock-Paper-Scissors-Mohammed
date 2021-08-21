@@ -1,0 +1,42 @@
+@font-face {
+  font-family: "JosefinSans-Light";
+  src: url("../assets/fonts/JosefinSans-Light.ttf");
+}
+@font-face {
+  font-family: "JosefinSans-Regular";
+  src: url("../assets/fonts/JosefinSans-Regular.ttf");
+}
+
+* {
+  font-family: "JosefinSans-Regular";
+  background-color: #faf8d9;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  color: #7f4f21;
+}
+h2 {
+  margin: 0px 20px;
+  color: #7f4f21;
+}
+p {
+  font-family: "JosefinSans-Light";
+  margin: 10px 10px 30px 20px;
+}
+.btn {
+  background-color: #7f4f21;
+  color: #ffffff;
+  border: none;
+  width: 300px;
+  height: 60px;
+  border-radius: 25px;
+  margin-top: 20px;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
