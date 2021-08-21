@@ -3,6 +3,10 @@ const computerHand = document.getElementById("ComputerHand");
 const choices = document.querySelectorAll(".choice-img");
 const computerCounter = document.getElementById("computerCounter");
 const playerCounter = document.getElementById("playerCounter");
+const popMsg = document.getElementById("pop");
+const popImg = document.getElementById("popImg");
+const continueBtn = document.getElementById("continue");
+const restartBtn = document.getElementById("restart");
 
 const startMove = () =>{
   playerHand.classList = "handL";
@@ -28,12 +32,14 @@ const generateComputerMove = () => {
   computerHand.setAttribute("id", `${id}`);
 };
 
+let isWin = false;
+let draw = false;
 const checkWinner = () => {
-  console.log(computerCounter.textContent)
-  console.log(parseInt(computerCounter.textContent))
+  isWin = false;
+  draw = false;
 
   if(computerHand.id == playerHand.id)
-  console.log("draw");
+    draw = true;
   else if(computerHand.id == "rock" && playerHand.id == "scissors")
     computerCounter.textContent = parseInt(computerCounter.textContent)+1;
   else if(computerHand.id == "paper" && playerHand.id == "rock")
@@ -41,14 +47,38 @@ const checkWinner = () => {
   else if(computerHand.id == "scissors" && playerHand.id == "paper")
     computerCounter.textContent = parseInt(computerCounter.textContent)+1;
 
-  else if(playerHand.id == "rock" && computerHand.id == "scissors")
+  else if(playerHand.id == "rock" && computerHand.id == "scissors"){
     playerCounter.textContent = parseInt(playerCounter.textContent)+1;
-  else if(playerHand.id == "paper" && computerHand.id == "rock")
+    isWin = true;
+  }
+  else if(playerHand.id == "paper" && computerHand.id == "rock"){
     playerCounter.textContent = parseInt(playerCounter.textContent)+1;
-  else if(playerHand.id == "scissors" && computerHand.id == "paper")
+    isWin = true;
+  }
+  else if(playerHand.id == "scissors" && computerHand.id == "paper"){
     playerCounter.textContent = parseInt(playerCounter.textContent)+1;
-
+    isWin = true;
+  }
 }
+
+const displayMsgImage = () => {
+  if(draw)
+  popImg.setAttribute("src", "../assets/images/draw.png");
+  else if(isWin)
+  popImg.setAttribute("src", "../assets/images/win.png");
+  else
+  popImg.setAttribute("src", "../assets/images/lose.png");
+   
+
+  popMsg.setAttribute("style","display:block;")
+}
+
+const hideMsgImage = () => {
+  popMsg.setAttribute("style","display:none;")
+  playerHand.setAttribute("src", "../assets/images/L1.png");
+  computerHand.setAttribute("src", "../assets/images/R1.png");
+}
+
 
 const displayRock = () => {
   startMove();
@@ -58,6 +88,7 @@ const displayRock = () => {
     playerHand.setAttribute("id", "rock");
     generateComputerMove();
     checkWinner();
+    displayMsgImage();
   }, 3000);
 };
 const displayPaper = () => {
@@ -68,6 +99,7 @@ const displayPaper = () => {
     playerHand.setAttribute("id", "paper");
     generateComputerMove();
     checkWinner();
+    displayMsgImage();
   }, 3000);
   
 };
@@ -80,9 +112,17 @@ const displayScissors = () => {
     playerHand.setAttribute("id", "scissors");
     generateComputerMove();
     checkWinner();
+    displayMsgImage();
   }, 3000);
 };
 
+const restart = () =>{
+  computerCounter.textContent = 0;
+  playerCounter.textContent = 0;
+}
+
+continueBtn.addEventListener("click", hideMsgImage);
+restartBtn.addEventListener("click", restart);
 
 choices[0].addEventListener("click", displayRock);
 choices[1].addEventListener("click", displayPaper);
