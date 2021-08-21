@@ -1,4 +1,4 @@
-const gameSound = new Audio("../assets/sounds/ingame.wav");
+const gameSound = new Audio("../assets/sounds/ingame.mp3");
 const clickSound = new Audio("../assets/sounds/click.wav");
 
 const playBtn = document.getElementById("play");
