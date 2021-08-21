@@ -151,6 +151,7 @@ const restart = () =>{
   clickSound.play();
   computerCounter.textContent = 0;
   playerCounter.textContent = 0;
+  roundNum.textContent = 0;
 }
 
 continueBtn.addEventListener("click", hideMsgImage);
