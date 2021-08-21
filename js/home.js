@@ -102,7 +102,7 @@ const hideMsgImage = () => {
 
 
 const displayRock = () => {
-  gameSound.volume = 0.1;
+  gameSound.volume = 0.3;
   startMove();
   setTimeout(()=> {
     endMove();
