@@ -7,6 +7,7 @@ const popMsg = document.getElementById("pop");
 const popImg = document.getElementById("popImg");
 const continueBtn = document.getElementById("continue");
 const restartBtn = document.getElementById("restart");
+const roundNum = document.getElementById("roundNum");
 const winSound = new Audio("../assets/sounds/win.mp3");
 const loseSound = new Audio("../assets/sounds/lose.wav");
 const gameSound = new Audio("../assets/sounds/ingame.mp3");
@@ -33,6 +34,9 @@ const endMove = () =>{
   countSound.pause();
 }
 
+const incrementRound = () => {
+  roundNum.textContent = parseInt(roundNum.textContent)+1;
+}
 
 const generateComputerMove = () => {
   let min = Math.ceil(1);
@@ -102,6 +106,7 @@ const hideMsgImage = () => {
 
 
 const displayRock = () => {
+  incrementRound();
   gameSound.volume = 0.3;
   startMove();
   setTimeout(()=> {
@@ -114,6 +119,7 @@ const displayRock = () => {
   }, 3000);
 };
 const displayPaper = () => {
+  incrementRound();
   gameSound.volume = 0.1;
   startMove();
   setTimeout(()=> {
@@ -128,6 +134,7 @@ const displayPaper = () => {
 };
 
 const displayScissors = () => {
+  incrementRound();
   gameSound.volume = 0.1;
   startMove();
   setTimeout(()=> {

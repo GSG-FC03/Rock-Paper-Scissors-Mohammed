@@ -1,24 +1,50 @@
+@font-face {
+  font-family: "JosefinSans-Light";
+  src: url("../assets/fonts/JosefinSans-Light.ttf");
+}
+@font-face {
+  font-family: "JosefinSans-Regular";
+  src: url("../assets/fonts/JosefinSans-Regular.ttf");
+}
+
 * {
   margin: 0;
+  font-family: "JosefinSans-Regular";
 }
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
-h1 {
+.header {
   margin-top: 80px;
   color: #7f4f21;
 }
-.players {
-  margin-top: 50px;
+.data{
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 50px;
+}
+
+.data-desktop{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  display: none;
 }
 .player {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.player-name {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,35 +54,37 @@ h1 {
   height: 50px;
   width: 150px;
   font-size: 18px;
+  margin-bottom: 15px;
 }
 
 .counter {
   margin: 0px 60px;
   color: #7f4f21;
 }
-.player:first-child {
+#player {
   border-radius: 0px 25px 25px 0px;
 }
-.player:nth-child(2) {
+#computer {
   border-radius: 25px 0px 0px 25px;
 }
 .hands {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 30px;
+  height: 30vh;
 }
 .hand {
-  margin-top: 50px;
-  width: 200px;
+  width: 45%;
+  margin: 15px 0px;
 }
 .handL {
-  margin-top: 50px;
-  width: 200px;
+  width: 40%;
   animation: spinLeft 1s linear 3;
 }
 .handR {
-  margin-top: 50px;
-  width: 200px;
+  width: 40%;
   animation: spinRight 1s linear 3;
 }
 
@@ -67,18 +95,20 @@ h1 {
 }
 
 .choice-img {
+  cursor: pointer;
   margin: 10px;
   width: 80px;
 }
 
 .btn {
+  cursor: pointer;
   background-color: #fff100;
   color: #7f4f21;
   border: none;
   width: 300px;
   height: 60px;
   border-radius: 25px;
-  margin-top: 50px;
+  margin: 50px 0;
   font-size: 20px;
 }
 
@@ -103,6 +133,7 @@ h1 {
   width: 75%;
 }
 .continue-btn {
+  cursor: pointer;
   background-image: linear-gradient(to right, rgb(255, 102, 0), yellow);
   color: white;
   border: none;
@@ -138,5 +169,36 @@ h1 {
 @media screen and (min-width: 600px) {
   .msg-img {
     width: 400px;
+  }
+  .player {
+    justify-content: center;
+  }
+  .player:first-child{
+    margin-left: 20%;
+  }
+  .player:nth-child(2){
+    margin-right: 20%;
+  }
+  #player {
+    border-radius: 25px;
+  }
+  #computer {
+    border-radius: 25px;
+  }
+  .hand {
+    width: 350px;
+    margin-bottom: 0px;
+  }
+  .handL {
+    width: 350px;
+  }
+  .handR {
+    width: 350px;
+  }
+  .hands{
+    height: 300px;
+  }
+  .choices{
+    margin-top: 0;
   }
 }
